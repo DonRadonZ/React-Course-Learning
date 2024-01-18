@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
 
 const ThaiFoodData = [
     {
         "name":  "หมูทอดกระเทียม",
-        "eng_name": "Pork Garlic Stir Fried",
+        eng_name: "Pork Garlic Stir Fried",
         "rice": "possible",
         "meat": ["pork"],
         "spicy": false,
@@ -12,8 +13,10 @@ const ThaiFoodData = [
         "green_level": "none",
         "contain_nut": "possible",
         "contain_milk": "none",
-        "avg_calories": 200,
-        "cuisine": "thai"
+        avg_calories: 200,
+        price: "45",
+        "cuisine": "thai",
+        photoName: "thaifood/Garlic-and-Pepper-Pork-with-Rice.jpg"
       },
       {
         "name":  "ข้าวมันไก่",
@@ -26,6 +29,7 @@ const ThaiFoodData = [
         "contain_nut": "none",
         "contain_milk": "none",
         "avg_calories": 515,
+        "price": "40",
         "cuisine": "chinese"
       },
        {
@@ -39,6 +43,7 @@ const ThaiFoodData = [
         "contain_nut": "none",
         "contain_milk": "none",
         "avg_calories": 438,
+        "price": "35",
         "cuisine": "chinese"
       },
       {
@@ -51,25 +56,13 @@ const ThaiFoodData = [
        "green_level": "none",
        "contain_nut": "none",
        "contain_milk": "none",
+       "price": "40",
        "avg_calories": 554,
        "cuisine": "thai"
      },
       {
-       "name":  "ผัดผักบุ้ง",
-       "eng_name": "Stir Fried Swamp Cabbage",
-       "rice": "possible",
-       "meat": [],
-       "spicy": true,
-       "seafood": false,
-       "green_level": "none",
-       "contain_nut": "contain",
-       "contain_milk": "none",
-       "avg_calories": 210,
-       "cuisine": "chinese"
-      },
-      {
         "name":  "แกงจืดเต้าหู้หมูสับ",
-        "eng_name": "Clear Soup with Bean Curd and Minced Pork",
+        eng_name: "Clear Soup with Bean Curd and Minced Pork",
         "rice": "not-contain",
         "meat": ["pork"],
         "spicy": false,
@@ -77,8 +70,10 @@ const ThaiFoodData = [
         "green_level": "none",
         "contain_nut": "not-contain",
         "contain_milk": "not-contain",
-        "avg_calories": null,
-        "cuisine": "chinese"
+        "avg_calories": 320,
+        price: "60",
+        "cuisine": "chinese",
+        photoName: "thaifood/Garlic-and-Pepper-Pork-with-Rice.jpg"
       },
       {
         "name":  "ผัดไท",
@@ -90,344 +85,15 @@ const ThaiFoodData = [
         "green_level": "none",
         "contain_nut": "possible",
         "contain_milk": "possible",
-        "avg_calories": null,
+        "avg_calories": 303,
+        "price": "40",
         "cuisine": "thai"
       },
-      {
-        "name":  "เต้าหู้ทรงเครื่อง",
-        "eng_name": "Deep Fried Tofu with Gravy Sauce",
-        "rice": "not-contain",
-        "meat": ["pork"],
-        "spicy": false,
-        "seafood": false,
-        "green_level": "none",
-        "contain_nut": "possible",
-        "contain_milk": "possible",
-        "avg_calories": null,
-        "cuisine": "chinese"
-      },
-      {
-        "name":  "ต้มยำกุ้ง",
-        "eng_name": "Hot and Sour Prawn Soup",
-        "rice": "not-contain",
-        "meat": ["prawn"],
-        "spicy": true,
-        "seafood": true,
-        "green_level": "none",
-        "contain_nut": "not-contain",
-        "contain_milk": "contain",
-        "avg_calories": null,
-        "cuisine": "thai"
-      },
-      {
-        "name":  "ไข่พะโล้",
-        "eng_name": "Thai Style Fragrant Eggs and Pork Chinese Five-Spice Stew",
-        "rice": "not-contain",
-        "meat": ["pork"],
-        "spicy": false,
-        "seafood": false,
-        "green_level": "none",
-        "contain_nut": "not-contain",
-        "contain_milk": "not-contain",
-        "avg_calories": null,
-        "cuisine": "chinese"
-      },
-      {
-        "name":  "ต้มยำปลากรอบ",
-        "eng_name": "Crispy Fish Soup",
-        "rice": "not-contain",
-        "meat": ["fish"],
-        "spicy": true,
-        "seafood": true,
-        "green_level": "none",
-        "contain_nut": "not-contain",
-        "contain_milk": "contain",
-        "avg_calories": null,
-        "cuisine": "thai"
-      },
-      {
-        "name":  "แกงจืดรวมมิตรทะเล",
-        "eng_name": "Seafood Clear Soup",
-        "rice": "not-contain",
-        "meat": ["octopus","shrimp"],
-        "spicy": false,
-        "seafood": true,
-        "green_level": "none",
-        "contain_nut": "not-contain",
-        "contain_milk": "not-contain",
-        "avg_calories": null,
-        "cuisine": "thai"
-      },
-      {
-        "name":  "ข้าวต้มปลา",
-        "eng_name": "Porridge with fish",
-        "rice": "contain",
-        "meat": ["fish"],
-        "spicy": false,
-        "seafood": true,
-        "green_level": "none",
-        "contain_nut": "not-contain",
-        "contain_milk": "not-contain",
-        "avg_calories": null,
-        "cuisine": "thai"
-      },
-      {
-        "name":  "ยำปลาดุกฟู",
-        "eng_name": "Spicy deep-fried catfish salad",
-        "rice": "not-contain",
-        "meat": ["catfish"],
-        "spicy": true,
-        "seafood": true,
-        "green_level": "none",
-        "contain_nut": "contain",
-        "contain_milk": "not-contain",
-        "avg_calories": null,
-        "cuisine": "thai"
-      },
-      {
-        "name":  "ทอดมันปลา",
-        "eng_name": "Curried fish cake",
-        "rice": "not-contain",
-        "meat": ["fish"],
-        "spicy": false,
-        "seafood": true,
-        "green_level": "none",
-        "contain_nut": "not-contain",
-        "contain_milk": "possible",
-        "avg_calories": null,
-        "cuisine": "thai"
-      },
-      {
-        "name":  "น้ำพริกอ่อง",
-        "eng_name": "Spicy meat and tomato dip",
-        "rice": "not-contain",
-        "meat": ["pork"],
-        "spicy": true,
-        "seafood": false,
-        "green_level": "none",
-        "contain_nut": "not-contain",
-        "contain_milk": "possible",
-        "avg_calories": null,
-        "cuisine": "thai"
-      },
-      {
-        "name":  "ผัดผักบุ้งไฟแดง",
-        "eng_name": "Quick-fried water spinach seasoned with chili and soy sauce",
-        "rice": "not-contain",
-        "meat": [""],
-        "spicy": true,
-        "seafood": false,
-        "green_level": "none",
-        "contain_nut": "possible",
-        "contain_milk": "not-contain",
-        "avg_calories": null,
-        "cuisine": "thai"
-      },
-      {
-        "name":  "หูฉลาม",
-        "eng_name": "Shark's fin",
-        "rice": "not-contain",
-        "meat": ["shark"],
-        "spicy": false,
-        "seafood": true,
-        "green_level": "none",
-        "contain_nut": "not-contain",
-        "contain_milk": "not-contain",
-        "avg_calories": null,
-        "cuisine": "chinese"
-      },
-      {
-        "name":  "ขนมจีนน้ำยา",
-        "eng_name": "Rice noodles in fish curry sauce with vegetables",
-        "rice": "not-contain",
-        "meat": ["fish"],
-        "spicy": false,
-        "seafood": false,
-        "green_level": "none",
-        "contain_nut": "not-contain",
-        "contain_milk": "contain",
-        "avg_calories": null,
-        "cuisine": "chinese"
-      },
-      {
-        "name":  "ห่อหมกปู",
-        "eng_name": "Streamed Crab Curry in a Banana Leaf Cup",
-        "rice": "not-contain",
-        "meat": ["crab"],
-        "spicy": false,
-        "seafood": true,
-        "green_level": "none",
-        "contain_nut": "not-contain",
-        "contain_milk": "contain",
-        "avg_calories": null,
-        "cuisine": "chiness"
-      },
-      {
-        "name":  "ข้าวผัดกระเพราหมู",
-        "eng_name": "Fired rice with basil and pork",
-        "rice": "possible",
-        "meat": ["pork"],
-        "spicy": true,
-        "seafood": false,
-        "green_level": "none",
-        "contain-nut": "none",
-        "contain-milk": "none",
-        "cuisine": "chinese"
-      },
-      {
-        "name":  "ผัดกะเพรา",
-        "eng_name": "Basil Fried Rice",
-        "rice": "contain",
-        "meat": ["pork", "chicken", "beef", "seafood"],
-        "spicy": true,
-        "seafood": true,
-        "green_level": "none",
-        "contain-nut": "not-contain",
-        "contain-milk": "not-contain",
-        "avg_calories": null,
-        "cuisine": "thai"
-      },
-      {
-        "name":  "ข้าวผัดกระเพราไก่",
-        "eng_name": "Fired rice with basil and chicken",
-        "rice": "possible",
-        "meat": ["chicken"],
-        "spicy": true,
-        "seafood": false,
-        "green_level": "none",
-        "contain-nut": "none",
-        "contain-milk": "none",
-      },{
-        "name":  "แกงเขียวหวาน",
-        "eng_name": "Green Curry With Meat",
-        "rice": "not-contain",
-        "meat": ["pork", "chicken", "beef"],
-        "spicy": true,
-        "seafood": false,
-        "green_level": "none",
-        "contain-nut": "not-contain",
-        "contain-milk": "not-contain",
-        "avg_calories": null,
-        "cuisine": "thai"
-      },
-      {
-    
-        "name":  "ข้าวผัดกระเพราหมึก",
-        "eng_name": "Fired rice with basil and octopus",
-        "rice": "possible",
-        "meat": ["octopus"],
-        "spicy": true,
-        "seafood": false,
-        "green_level": "none",
-        "contain-nut": "none",
-        "contain-milk": "none",
-        "avg_calories": null,
-        "cuisine": "thai"
-      },
-      {
-        "name":  "ข้าวผัดกระเพราเนื้อ",
-        "eng_name": "Fired rice with basil and meat",
-        "rice": "possible",
-        "meat": ["meat"],
-        "spicy": true,
-        "seafood": false,
-        "green_level": "none",
-        "contain-nut": "none",
-        "contain-milk": "none",
-        "avg_calories": null,
-        "cuisine": "thai"
-      },
-      {
-        "name":  "ข้าวผัดกระเพราทะเล",
-        "eng_name": "Fired rice with basil and seafood",
-        "rice": "possible",
-        "meat": ["seafood"],
-        "spicy": true,
-        "seafood": false,
-        "green_level": "none",
-        "contain-nut": "none",
-        "contain-milk": "none",
-        "avg_calories": null,
-        "cuisine": "thai"
-      },
-      {
-        "name":  "ข้าวขาหมู",
-        "eng_name": "BBQ pork Rice",
-        "rice": "possible",
-        "meat": ["pork"],
-        "spicy": false,
-        "seafood": false,
-        "green_level": "none",
-        "contain-nut": "none",
-        "contain-milk": "none",
-        "avg_calories": null,
-        "cuisine": "chiness"
-      },{
-        "name":  "ข้าวผัดหมู",
-        "eng_name": "Fired rice with pork",
-        "rice": "possible",
-        "meat": ["pork"],
-        "spicy": false,
-        "seafood": false,
-        "green_level": "none",
-        "contain-nut": "none",
-        "contain-milk": "none",
-        "avg_calories": null,
-        "cuisine": "chiness"
-      },{
-        "name":  "ข้าวผัดไก่",
-        "eng_name": "Fired rice with chicken",
-        "rice": "possible",
-        "meat": ["chicken"],
-        "spicy": false,
-        "seafood": false,
-        "green_level": "none",
-        "contain-nut": "none",
-        "contain-milk": "none",
-        "avg_calories": null,
-        "cuisine": "chiness"
-      },{
-        "name":  "ข้าวผัดหมึก",
-        "eng_name": "Fired rice with octopus",
-        "rice": "possible",
-        "meat": ["octopus"],
-        "spicy": false,
-        "seafood": false,
-        "green_level": "none",
-        "contain-nut": "none",
-        "contain-milk": "none",
-        "avg_calories": null,
-        "cuisine": "chiness"
-      },{
-        "name":  "ข้าวผัดทะเล",
-        "eng_name": "Fired rice with seafood",
-        "rice": "possible",
-        "meat": ["seafood"],
-        "spicy": false,
-        "seafood": false,
-        "green_level": "none",
-        "contain-nut": "none",
-        "contain-milk": "none",
-        "avg_calories": null,
-        "cuisine": "chiness"
-      },{
-        "name":  "ยำปลากระป๋อง",
-        "eng_name": "Thai Spicy Canned Sardines Salad",
-        "rice": "not-contain",
-        "meat": ["fish"],
-        "spicy": true,
-        "seafood": true,
-        "green_level": "none",
-        "contain-nut": "not-contain",
-        "contain-milk": "not-contain",
-        "avg_calories": null,
-        "cuisine": "thai"
-      }
 ]
 
 function App() {
     return (
-    <div>
+    <div className='container'>
        <Header />
        <Menu />
        <Footer />
@@ -436,22 +102,50 @@ function App() {
 }
 
 function Header() {
-    return <h1>My Thai React Restaurant Co.</h1>
+//const style = {color: 'green', fontSize: '48px',textTransform:"uppercase"}
+    const style = {}
+    
+    return (
+        <header className="header">
+            <h1 style={style}>My Thai React Restaurant Co.</h1>
+        </header>
+    );
 }
 
 function Menu() {
     return (
-    <div>
+    <main className="menu">
         <h2>Our menu</h2>
-        <ThaiFood/>
-        <ThaiFood/>
-        <ThaiFood/>
-        <ThaiFood/>
-        <ThaiFood/>
-        <ThaiFood/>
-    </div>
+            <ThaiFood
+                name='Pork Garlic Stir Fried'
+                avg_calories= '200'
+                photoName='thaifoods/Garlic-and-Pepper-Pork-with-Rice.jpg'
+                price = {45}
+            /> 
+            <ThaiFood
+                name='Chicken Rice'
+                avg_calories= '515'
+                photoName='thaifoods/Hainanese_Chicken_Rice.jpg'
+                price = {40}
+            /> 
+    </main>
     )
 }
+
+
+function ThaiFood(props) {
+ console.log(props)
+
+ return (
+    <div className="thaifood">
+         <img src={props.photoName} alt={props.eng_name} />
+         <div>
+             <h3>{props.name}</h3>
+             <p>{props.avg_calories}</p>
+             <span>{props.price}</span>
+         </div>
+    </div>
+)}
 
 function Footer() {
     const hour = new Date().getHours()
@@ -463,18 +157,10 @@ function Footer() {
     // if(hour >= openHour && hour <= closeHour) alert("We're currently open!")
     // else alert("Sorry we're closed") 
 
-    return <footer>{new Date().toLocaleTimeString()}. Coming and taste it now.</footer>
+    return <footer className="footer">{new Date().toLocaleTimeString()}. Coming and taste it now.</footer>
     //return React.createElement('footer', null, "Coming and taste it now.")
 }
 
-function ThaiFood() {
- return (
-    <div>
-        <img src="thaifood/Garlic-and-Pepper-Pork-with-Rice.jpg" alt="Garlic and Pepper Pork with Rice"/>
-        <h2>Pork Garlic Stir Fried</h2>
-        <p>rice, pork, garlic, and oil</p>
-    </div>
-)}
 
 // React v18
 const root = ReactDOM.createRoot(document.getElementById("root"));
