@@ -428,12 +428,43 @@ const ThaiFoodData = [
 function App() {
     return (
     <div>
-       <h1>Hello React!</h1>
-       <ThaiFood/>
-       <ThaiFood/>
-       <ThaiFood/>
+       <Header />
+       <Menu />
+       <Footer />
     </div>
   );
+}
+
+function Header() {
+    return <h1>My Thai React Restaurant Co.</h1>
+}
+
+function Menu() {
+    return (
+    <div>
+        <h2>Our menu</h2>
+        <ThaiFood/>
+        <ThaiFood/>
+        <ThaiFood/>
+        <ThaiFood/>
+        <ThaiFood/>
+        <ThaiFood/>
+    </div>
+    )
+}
+
+function Footer() {
+    const hour = new Date().getHours()
+    const openHour = 11;
+    const closeHour = 22;
+    const isOpen = hour >= openHour && hour <= closeHour;
+    console.log(isOpen)
+
+    // if(hour >= openHour && hour <= closeHour) alert("We're currently open!")
+    // else alert("Sorry we're closed") 
+
+    return <footer>{new Date().toLocaleTimeString()}. Coming and taste it now.</footer>
+    //return React.createElement('footer', null, "Coming and taste it now.")
 }
 
 function ThaiFood() {
