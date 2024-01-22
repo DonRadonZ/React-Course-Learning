@@ -16,7 +16,8 @@ const ThaiFoodData = [
         avg_calories: 200,
         price: "45",
         "cuisine": "thai",
-        photoName: "thaifood/Garlic-and-Pepper-Pork-with-Rice.jpg"
+        photoName: "thaifoods/Garlic-and-Pepper-Pork-with-Rice.jpg",
+        soldOut: false,
       },
       {
         "name":  "ข้าวมันไก่",
@@ -30,7 +31,9 @@ const ThaiFoodData = [
         "contain_milk": "none",
         "avg_calories": 515,
         "price": "40",
-        "cuisine": "chinese"
+        "cuisine": "chinese",
+        soldOut: false,
+        photoName: "thaifoods/Hainanese_Chicken_Rice.jpg"
       },
        {
         "name":  "ข้าวหมูแดง",
@@ -44,7 +47,9 @@ const ThaiFoodData = [
         "contain_milk": "none",
         "avg_calories": 438,
         "price": "35",
-        "cuisine": "chinese"
+        "cuisine": "chinese",
+        soldOut: false,
+        photoName: "thaifoods/Kao-moo-dang.jpg"
       },
       {
        "name":  "ข้าวผัดกระเพราไก่",
@@ -58,7 +63,9 @@ const ThaiFoodData = [
        "contain_milk": "none",
        "price": "40",
        "avg_calories": 554,
-       "cuisine": "thai"
+       "cuisine": "thai",
+       soldOut: false,
+       photoName: "thaifoods/Spicy-Chicken-Basil-Fried-Rice.jpg"
      },
       {
         "name":  "แกงจืดเต้าหู้หมูสับ",
@@ -73,7 +80,8 @@ const ThaiFoodData = [
         "avg_calories": 320,
         price: "60",
         "cuisine": "chinese",
-        photoName: "thaifood/Garlic-and-Pepper-Pork-with-Rice.jpg"
+        photoName: "thaifoods/Garlic-and-Pepper-Pork-with-Rice.jpg",
+        soldOut: true
       },
       {
         "name":  "ผัดไท",
@@ -87,7 +95,9 @@ const ThaiFoodData = [
         "contain_milk": "possible",
         "avg_calories": 303,
         "price": "40",
-        "cuisine": "thai"
+        "cuisine": "thai",
+        soldOut: false,
+        photoName: "thaifoods/Phat_Thai_kung_Chang_Khien_street_stall.jpg"
       },
 ]
 
@@ -113,10 +123,33 @@ function Header() {
 }
 
 function Menu() {
+    const thaifoods = ThaiFoodData;
+    //const thaifoods = [];
+    const numThaifoods = thaifoods.length;
+
     return (
     <main className="menu">
         <h2>Our menu</h2>
-            <ThaiFood
+
+        
+        {numThaifoods > 0 ? (
+            <>
+              <p>
+                Authetic Thai Food. 6 dishes to choose from. All from 
+                Thai master chef, all organic, all delicious.
+              </p>
+
+              <ul className="thaifoods">
+                 {ThaiFoodData.map((thaifood) => (
+                    <ThaiFood thaifoodObj={thaifood} key={thaifood.name}/>
+                 ))}
+              </ul>
+            </>
+        ) : ( 
+            <p>We're still working on our menu. Please come back later :)</p> 
+        )}
+  
+            {/* <ThaiFood
                 name='Pork Garlic Stir Fried'
                 avg_calories= '200'
                 photoName='thaifoods/Garlic-and-Pepper-Pork-with-Rice.jpg'
@@ -127,24 +160,33 @@ function Menu() {
                 avg_calories= '515'
                 photoName='thaifoods/Hainanese_Chicken_Rice.jpg'
                 price = {40}
-            /> 
+            />  */}
     </main>
     )
 }
 
 
-function ThaiFood(props) {
- console.log(props)
+function ThaiFood({ thaifoodObj }) {
+ console.log(thaifoodObj);
+
+//  if(thaifoodObj.soldOut) return null;
 
  return (
-    <div className="thaifood">
-         <img src={props.photoName} alt={props.eng_name} />
+    <li className={`thaifood ${thaifoodObj.soldOut ? "sold-out": ""}`}>
+         <img src={thaifoodObj.photoName} alt={thaifoodObj.eng_name} />
          <div>
-             <h3>{props.name}</h3>
-             <p>{props.avg_calories}</p>
-             <span>{props.price}</span>
+             <h3>{thaifoodObj.eng_name}</h3>
+             <p>{thaifoodObj.avg_calories} Cal</p>
+
+            {/* {thaifoodObj.soldOut ? (
+                <span>SOLD OUT</span>
+                ) : (
+                    <span>{thaifoodObj.price}</span>
+                )} */}
+
+             <span>{thaifoodObj.soldOut ? 'SOLD OUT' : thaifoodObj.price}</span>
          </div>
-    </div>
+    </li>
 )}
 
 function Footer() {
@@ -155,10 +197,34 @@ function Footer() {
     console.log(isOpen)
 
     // if(hour >= openHour && hour <= closeHour) alert("We're currently open!")
-    // else alert("Sorry we're closed") 
+    // else alert("Sorry we're closed")
+    
+    // if(!isOpen) return( <p>CLOSED</p> );
 
-    return <footer className="footer">{new Date().toLocaleTimeString()}. Coming and taste it now.</footer>
+    return (
+    <footer className="footer">
+      {isOpen ? (<Order closeHour={closeHour} openHour={openHour} />         
+      ) : ( 
+        <p>
+            We're happy to welcome you between {openHour}:00 and {closeHour}:00.
+        </p>
+      )}
+    
+    </footer>
+    );
     //return React.createElement('footer', null, "Coming and taste it now.")
+}
+
+function Order({closeHour, openHour}){
+    return(
+        <div className="order">
+        <p>
+            Coming and taste it now between {openHour}:00 to {closeHour}:00. Come to visit us or order 
+            online.
+        </p>
+        <button className="btn">Order now</button>
+      </div>
+    )
 }
 
 
