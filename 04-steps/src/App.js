@@ -6,7 +6,9 @@ const messages = [
 ];
 
 export default function App() {
- const [step, setStep] = useState(1)
+ const [step, setStep] = useState(1);
+ const [isOpen, setIsOpen] = useState(true);
+
 //  const [test, setTest] = useState({name: "Don"})
  
 
@@ -25,30 +27,36 @@ export default function App() {
  }
 
   return( 
-  <div className="steps" style={{backgroundColor: "#DCF2F1"}}>
-    <div className="numbers">
-      <div className={step >= 1 ? "active" : ""}>1</div>
-      <div className={step >= 2 ? "active" : ""}>2</div>
-      <div className={step >= 3 ? "active" : ""}>3</div>
-    </div>
+  <>
+  <button className="close" onClick={() => setIsOpen(!isOpen)}>&times;</button>
+    { isOpen && (
+      <div className="steps" style={{backgroundColor: "#DCF2F1"}}>
+        <div className="numbers">
+          <div className={step >= 1 ? "active" : ""}>1</div>
+          <div className={step >= 2 ? "active" : ""}>2</div>
+          <div className={step >= 3 ? "active" : ""}>3</div>
+        </div>
 
-    <p className="message">
-    Step {step}: {messages[step - 1]}
-    {test.name}
-    </p>
+        <p className="message">
+        Step {step}: {messages[step - 1]}
+        {/* {test.name} */}
+        </p>
 
-    <div className="buttons">
-      <button style={{backgroundColor: "#7FC7D9", color: "#0F1035"}} 
-      onClick={handlePrevious}
-      >
-      Previous
-      </button>
-      <button style={{backgroundColor: "#7FC7D9", color: "#0F1035"}} 
-      onClick={handleNext}
-      >
-      Next
-      </button>
-    </div>
-  </div>
+        <div className="buttons">
+          <button style={{backgroundColor: "#7FC7D9", color: "#0F1035"}} 
+          onClick={handlePrevious}
+          >
+          Previous
+          </button>
+          <button style={{backgroundColor: "#7FC7D9", color: "#0F1035"}} 
+          onClick={handleNext}
+          >
+          Next
+          </button>
+        </div>
+      </div>
+    )}
+  </>
+    
 )
 }
