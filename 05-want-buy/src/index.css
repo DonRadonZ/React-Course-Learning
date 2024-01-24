@@ -40,7 +40,7 @@ h1 {
 }
 
 .add-form {
-  background-color: #0E9594;
+  background-color: #30C5FF;
   padding: 2.8rem 0;
   display: flex;
   align-items: center;
@@ -69,7 +69,7 @@ input {
 
 .add-form button {
   text-transform: uppercase;
-  background-color: #0E9594;
+  background-color: #00F0B5;
 }
 
 .list {
@@ -111,6 +111,12 @@ input {
   gap: 1.2rem;
 }
 
+.box ::-webkit-scrollbar,
+.list ::-webkit-scrollbar {
+  display: none;
+  scroll-behavior: smooth; 
+}
+
 input[type="checkbox"] {
   height: 2rem;
   width: 2rem;
@@ -127,7 +133,7 @@ input[type="checkbox"] {
 }
 
 .stats {
-  background-color: #0E9594;
+  background-color: #00FFCD;
   text-align: center;
   font-weight: 700;
   padding: 3.2rem 0;
