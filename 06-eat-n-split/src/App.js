@@ -21,37 +21,58 @@ const initialFriends = [
   },
 ];
 
-function Button({children, onClick}){
+function Button({ children, onClick}){
   return(
-    <button className="button" onClick={onClick}>{children}</button>
-  )
+    <button className="button" onClick={onClick}>
+      {children}
+      </button>
+  );
 }
 
 export default function App() {
+  const [friends, setFriends] = useState(initialFriends);
   const [showAddFriend, setShowAddFriend] = useState(false);
 
   function handleShowAddFriend(){
     setShowAddFriend((show) => !show);
   }
 
+  function handleAddFriend(friend) {
+    setFriends((friends) => [...friends, friend]);
+    setShowAddFriend(false)
+  }
+
   return(
     <div className="app">
       <div className="sidebar">
-      <FriendList/>
-      {showAddFriend && <FormAddFriend />}
-      <Button onClick={handleShowAddFriend}>{showAddFriend ? 'Close' : 'Add Friend'}</Button>
+      <FriendList 
+      friends={friends}
+      />
+
+      {showAddFriend && <FormAddFriend onAddFriend=
+      {handleAddFriend} 
+      />}
+
+      <Button onClick={handleShowAddFriend}>
+        {showAddFriend ? "Close" : "Add Friend"}
+        </Button>
       </div>
+
       <FormSplitBill/>
+
     </div>
   )
 }
 
-function FriendList(){
-  const friends = initialFriends; 
+function FriendList({ friends }){
+
   return(
   <ul>
     {friends.map((friend) => (
-      <Friend friend={friend} key={friend.id}/>
+      <Friend 
+      friend={friend} 
+      key={friend.id}
+      />
     ))}
   </ul>
   )
@@ -85,8 +106,8 @@ function Friend({friend}){
 
 
 
-function FormAddFriend() {
-  const [name, setName] = useState('')
+function FormAddFriend({onAddFriend}) {
+  const [name, setName] = useState("")
   const [image, setImage] = useState("https://i.pravatar.cc/48");
 
   function handleSubmit(e){
@@ -98,12 +119,13 @@ function FormAddFriend() {
     const newFriend = {
       id,
       name, 
-      image: `${image}?=${id}`,
+      image: `${image}?u=${id}`,
       balance: 0,
       
     }
 
-    console.log(newFriend);
+    onAddFriend(newFriend)
+    
     setName('');
     setImage("https://i.pravatar.cc/48");
   }
@@ -123,7 +145,7 @@ function FormAddFriend() {
       onChange={(e) => setImage(e.target.value)}
       />
 
-      <Button className="button">Select</Button>
+      <Button className="button">Add</Button>
     </form>
   )
 }
