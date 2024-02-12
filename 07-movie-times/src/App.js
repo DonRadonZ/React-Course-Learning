@@ -1,6 +1,12 @@
 import { useState } from "react";
 
+// Navbar Part
 import NavBar from "./components/Header/navbar";
+import Logo from "./components/Header/logo";
+import NumResult from "./components/Header/numresult";
+import Search from "./components/Header/search";
+
+
 import MovieList from "./components/movie/movieList";
 import Watched from "./components/movie/watched";
 import WatchedBox from "./components/movie/summary";
@@ -67,7 +73,11 @@ export default function App() {
 
   return (
     <>
-      <NavBar movies={movies} />
+      <NavBar>
+        <Logo/>
+        <Search/>
+        <NumResult movies={movies}/>
+      </NavBar>
       <main className="main">
       <MovieList isOpen1 = {isOpen1} setIsOpen1={setIsOpen1} movies={movies}/>
       <Watched isOpen2={isOpen2} setIsOpen2={setIsOpen2} avgImdbRating={avgImdbRating} avgUserRating={avgUserRating} avgRuntime={avgRuntime} WatchedBox={WatchedBox} watched={watched}/>
