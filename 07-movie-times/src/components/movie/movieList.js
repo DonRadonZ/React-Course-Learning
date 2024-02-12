@@ -1,5 +1,7 @@
 import React from "react"
 
+import Box from "../Box/box";
+
 function MovieList({isOpen1,setIsOpen1,movies}){
   return(
   <div className="box">
