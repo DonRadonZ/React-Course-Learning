@@ -8,7 +8,7 @@ import Search from "./components/Header/search";
 
 
 import MovieList from "./components/movie/movieList";
-import Watched from "./components/movie/watched";
+import WatchedList from "./components/movie/watched";
 import WatchedBox from "./components/movie/summary";
 const tempMovieData = [
   {
@@ -64,8 +64,7 @@ export default function App() {
   
   const [movies, setMovies] = useState(tempMovieData);
   const [watched, setWatched] = useState(tempWatchedData);
-  const [isOpen1, setIsOpen1] = useState(true);
-  const [isOpen2, setIsOpen2] = useState(true);
+  
 
   const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
   const avgUserRating = average(watched.map((movie) => movie.userRating));
@@ -79,8 +78,8 @@ export default function App() {
         <NumResult movies={movies}/>
       </NavBar>
       <main className="main">
-      <MovieList isOpen1 = {isOpen1} setIsOpen1={setIsOpen1} movies={movies}/>
-      <Watched isOpen2={isOpen2} setIsOpen2={setIsOpen2} avgImdbRating={avgImdbRating} avgUserRating={avgUserRating} avgRuntime={avgRuntime} WatchedBox={WatchedBox} watched={watched}/>
+      <MovieList movies={movies}/>
+      <WatchedList avgImdbRating={avgImdbRating} avgUserRating={avgUserRating} avgRuntime={avgRuntime} WatchedBox={WatchedBox} watched={watched}/>
       </main>
     </>
   );
