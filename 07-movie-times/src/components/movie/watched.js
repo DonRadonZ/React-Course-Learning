@@ -1,24 +1,15 @@
-function Watched({isOpen2,setIsOpen2,avgImdbRating, avgUserRating,avgRuntime, WatchedBox , watched}){
+import Box from "../Box/box";
+
+function WatchedList({avgImdbRating, avgUserRating,avgRuntime, WatchedBox , watched}){
     return(
-    <div className="box">
-          <button
-            className="btn-toggle"
-            onClick={() => setIsOpen2((open) => !open)}
-          >
-            {isOpen2 ? "–" : "+"}
-          </button>
-          {isOpen2 && (
-            <>
+      <Box>
               <WatchedBox watched={watched} avgImdbRating={avgImdbRating} avgUserRating={avgUserRating} avgRuntime={avgRuntime}/>
-              <WatchedList watched={watched}/>
-              
-            </>
-          )}
-        </div>
+              <Watched watched={watched}/>
+      </Box>
     );
 }
 
-function WatchedList({watched}){
+function Watched({watched}){
     return(
         <ul className="list">
                 {watched.map((movie) => (
@@ -45,4 +36,4 @@ function WatchedList({watched}){
     )
 }
 
-export default Watched
+export default WatchedList
