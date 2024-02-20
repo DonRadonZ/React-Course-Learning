@@ -6,7 +6,7 @@ import Logo from "./components/Header/logo";
 import NumResult from "./components/Header/numresult";
 import Search from "./components/Header/search";
 
-
+// page app
 import MovieList from "./components/movie/movieList";
 import WatchedList from "./components/movie/watched";
 import WatchedBox from "./components/movie/summary";
@@ -61,7 +61,6 @@ const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
 export default function App() {
-  
   const [movies, setMovies] = useState(tempMovieData);
   const [watched, setWatched] = useState(tempWatchedData);
   
