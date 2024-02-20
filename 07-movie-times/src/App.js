@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+// import axios from 'axios'
 
 // Navbar Part
 import NavBar from "./components/Header/navbar";
@@ -10,6 +11,7 @@ import Search from "./components/Header/search";
 import MovieList from "./components/movie/movieList";
 import WatchedList from "./components/movie/watched";
 import WatchedBox from "./components/movie/summary";
+
 const tempMovieData = [
   {
     imdbID: "tt1375666",
@@ -57,13 +59,25 @@ const tempWatchedData = [
   },
 ];
 
+// use your api key for fetch movie
+const KEY = ''
+
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
 export default function App() {
-  const [movies, setMovies] = useState(tempMovieData);
-  const [watched, setWatched] = useState(tempWatchedData);
+  const [movies, setMovies] = useState([]);
+  const [watched, setWatched] = useState([]);
   
+  useEffect(function(){
+    fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=interstellar`)
+        .then(res => res.json())
+        .then((data) => setMovies(data.Search));
+  }, [])
+
+  
+    
+   
 
   const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
   const avgUserRating = average(watched.map((movie) => movie.userRating));
@@ -77,7 +91,7 @@ export default function App() {
         <NumResult movies={movies}/>
       </NavBar>
       <main className="main">
-      <MovieList movies={movies}/>
+      <MovieList movies={movies} setMovies= {setMovies}/>
       <WatchedList avgImdbRating={avgImdbRating} avgUserRating={avgUserRating} avgRuntime={avgRuntime} WatchedBox={WatchedBox} watched={watched}/>
       </main>
     </>
