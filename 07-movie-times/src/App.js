@@ -32,7 +32,7 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [selectedId, setSelectedId] = useState(null);
-  const controller = new AbortController();
+  
   // const tempQuery = "interstellar";
 
   /*
@@ -66,7 +66,8 @@ export default function App() {
 
  
 
-  useEffect(function() {
+  useEffect(function () {
+    const controller = new AbortController();
     async function fetchMovies() {
       try {
         setIsLoading(true);
