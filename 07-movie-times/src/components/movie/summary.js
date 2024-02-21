@@ -22,6 +22,7 @@ function WatchedBox({watched,avgImdbRating,avgUserRating,avgRuntime}){
                     <span>⏳</span>
                     <span>{avgRuntime} min</span>
                   </p>
+                  
                 </div>
               </div>
     )
