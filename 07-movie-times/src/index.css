@@ -58,8 +58,28 @@ body {
   position: relative;
 }
 
-.box::-webkit-scrollbar {
+/* Initially set the scrollbar to be transparent */
+::-webkit-scrollbar {
+  width: 4px;
+  background-color: transparent;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-corner {
   display: none;
+}
+
+.box:hover::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 2px;
+}
+
+.box:hover::-webkit-scrollbar-thumb:hover,
+.box:hover::-webkit-scrollbar-thumb:active {
+  background-color: #555;
 }
 
 .loader {
