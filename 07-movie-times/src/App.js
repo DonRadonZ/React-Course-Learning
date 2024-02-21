@@ -6,6 +6,7 @@ import NavBar from "./components/Header/navbar";
 import Logo from "./components/Header/logo";
 import NumResult from "./components/Header/numresult";
 import Search from "./components/Header/search";
+import Box from "./components/Box/box";
 
 // page app
 import MovieList from "./components/movie/movieList";
@@ -18,7 +19,7 @@ import ErrorMessage from "./components/Error/Error";
 
 
 // use your api key for fetch movie
-const KEY = ''
+const KEY = 'f6844654'
 
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -29,14 +30,30 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [query, setQuery] = useState("");
-  const tempQuery = "interstellar"
-  
+  const tempQuery = "interstellar";
+
+  /*
+  useEffect(function(){
+    console.log("After initial render");
+  },[]);
+  useEffect(function(){
+    console.log("After every render");
+  });
+  useEffect(function(){
+    console.log("D");
+  },[query]);
+
+  console.log("During render");
+  */
+
   useEffect(function() {
     async function fetchMovies() {
-      try {setIsLoading(true);
-        const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=${tempQuery}`);
-        
+      try {
+        setIsLoading(true);
+        setError("");
 
+        const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=${query}`);
+        
         if (!res.ok)
           throw new Error("Something went wrong with fetching movies");
 
@@ -52,8 +69,13 @@ export default function App() {
         setIsLoading(false);
       }
     } 
+    if(!query.length){
+      setMovies([]);
+      setError('')
+      return
+    }
     fetchMovies();
-  },  [])
+  },  [query]);
 
   
     
@@ -72,10 +94,12 @@ export default function App() {
       <main className="main">
       {/* {isLoading ? <Loader/> :<MovieList movies={movies}/>}
        */}
+      <Box>
         {isLoading && <Loader />}
         {!isLoading && !error && <MovieList
           movies={movies} />}
         {error && <ErrorMessage message={error} />}
+      </Box>
       <WatchedList avgImdbRating={avgImdbRating} avgUserRating={avgUserRating} avgRuntime={avgRuntime} WatchedBox={WatchedBox} watched={watched}/>
       </main>
     </>
