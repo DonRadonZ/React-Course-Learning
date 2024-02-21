@@ -1,11 +1,11 @@
-import Box from "../Box/box";
+
 
 function WatchedList({avgImdbRating, avgUserRating,avgRuntime, WatchedBox , watched}){
     return(
-      <Box>
+      <>
               <WatchedBox watched={watched} avgImdbRating={avgImdbRating} avgUserRating={avgUserRating} avgRuntime={avgRuntime}/>
               <Watched watched={watched}/>
-      </Box>
+              </>
     );
 }
 
