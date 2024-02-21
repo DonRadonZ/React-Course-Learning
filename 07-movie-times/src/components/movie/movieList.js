@@ -1,16 +1,14 @@
 import React from "react"
 
-import Box from "../Box/box";
+
 
 function MovieList({movies}){
   return(
-    <Box>
       <ul className="list">
       {movies?.map((movie) => (
         <Movie movie={movie} key={movie.imdbID}/>
       ))}
     </ul>
-  </Box>
   )
 }
 
