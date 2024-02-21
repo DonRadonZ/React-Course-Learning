@@ -3,8 +3,8 @@
 function WatchedList({avgImdbRating, avgUserRating,avgRuntime, WatchedBox , watched,onDeleteWatched}){
     return(
       <>
-        <WatchedBox watched={watched} avgImdbRating={avgImdbRating} avgUserRating={avgUserRating} avgRuntime={avgRuntime}  />
-              <Watched watched={watched} onDeleteWatched={onDeleteWatched}/>
+        <WatchedBox watched={watched} avgImdbRating={avgImdbRating} avgUserRating={avgUserRating} avgRuntime={avgRuntime} /><br/>
+              <Watched watched={watched} onDeleteWatched={onDeleteWatched}/><br/>
               </>
     );
 }
