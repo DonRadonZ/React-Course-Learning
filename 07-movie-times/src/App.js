@@ -30,7 +30,9 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [query, setQuery] = useState("");
-  const tempQuery = "interstellar";
+  const [selectedId, setSelectedId] = useState(null);
+
+  // const tempQuery = "interstellar";
 
   /*
   useEffect(function(){
@@ -45,6 +47,13 @@ export default function App() {
 
   console.log("During render");
   */
+
+  function handleSelectedMovie(id){
+    setSelectedId(selectedId => id === selectedId ? null : id);
+  }
+  function handleCloseMovie(){
+    setSelectedId(null)
+  }
 
   useEffect(function() {
     async function fetchMovies() {
@@ -62,7 +71,7 @@ export default function App() {
           
 
       setMovies(data.Search);
-        setIsLoading(false);
+        console.log(data.Search);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -97,11 +106,20 @@ export default function App() {
       <Box>
         {isLoading && <Loader />}
         {!isLoading && !error && <MovieList
-          movies={movies} />}
+          movies={movies} onSelectMovie={handleSelectedMovie} />}
         {error && <ErrorMessage message={error} />}
       </Box>
-      <WatchedList avgImdbRating={avgImdbRating} avgUserRating={avgUserRating} avgRuntime={avgRuntime} WatchedBox={WatchedBox} watched={watched}/>
+      <Box>
+      {selectedId ? <MovieDetails selectedId={selectedId} onCloseMovie={handleCloseMovie}/> : <WatchedList avgImdbRating={avgImdbRating} avgUserRating={avgUserRating} avgRuntime={avgRuntime} WatchedBox={WatchedBox} watched={watched}/>}
+      </Box>
       </main>
     </>
   );
+}
+
+function MovieDetails({selectedId,onCloseMovie}){
+  
+  return(<div className="details">
+    <button className="btn-back" onClick={onCloseMovie}>&larr;</button>
+    {selectedId}</div>)
 }
