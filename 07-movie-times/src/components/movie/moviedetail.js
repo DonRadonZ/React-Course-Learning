@@ -1,4 +1,5 @@
 import React,{useState,useEffect,useRef} from "react";
+import { useKey } from "../useKey/useKey";
 import Loader from "../Loader/loader";
 import StarRating from "../StarRating/starrating";
 
@@ -11,9 +12,10 @@ export default function MovieDetails({ selectedId, onCloseMovie,onAddWatched,wat
   
     const countRef = useRef(0);
 
-    useEffect(function(){
+    useEffect(
+    function(){
       if(userRating)  countRef.current = countRef.current++;
-    },
+      },
     [userRating]
   );
 
@@ -66,6 +68,8 @@ export default function MovieDetails({ selectedId, onCloseMovie,onAddWatched,wat
     // setAvgRating(Number(imdbRating))
     // setAvgRating((avgRating) => (avgRating+userRating) / 2)
     }
+
+    useKey('Escape', onCloseMovie)
   
     useEffect(
       function () {
@@ -76,10 +80,10 @@ export default function MovieDetails({ selectedId, onCloseMovie,onAddWatched,wat
      }
      
      document.addEventListener('keydown', callback );
-     return function () {
+      return function () {
        document.removeEventListener('keydown', callback )
-     }
-   },
+      }
+    },
      [onCloseMovie]
    );
   
