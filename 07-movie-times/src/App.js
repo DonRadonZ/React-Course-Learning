@@ -20,7 +20,7 @@ import StarRating from "./components/StarRating/starrating";
 
 
 // use your api key for fetch movie
-const KEY = 'f6844654'
+const KEY = ''
 
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
