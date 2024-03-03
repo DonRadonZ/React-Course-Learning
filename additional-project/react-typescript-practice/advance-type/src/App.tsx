@@ -4,7 +4,7 @@ import Container from "./components/Container";
 function App() {
   return (
   <main>
-      <Container as={Button} />
+      <Container as={Button}>Click Me</Container>
   </main>
   );
 }
