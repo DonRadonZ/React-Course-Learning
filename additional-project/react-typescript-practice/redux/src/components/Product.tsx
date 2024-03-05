@@ -1,5 +1,5 @@
-import { addToCart } from "../store/cart-slice";
-import { useCartDispatch } from "../store/hooks";
+import { addToCart } from "../store/cart-slice.ts";
+import { useCartDispatch } from "../store/hooks.ts";
 
 type ProductProps = {
     id: string;

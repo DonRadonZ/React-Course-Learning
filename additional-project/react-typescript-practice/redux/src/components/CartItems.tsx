@@ -1,5 +1,5 @@
-import { type CartItem ,addToCart, removeFromCart } from "../store/cart-slice";
-import { useCartDispatch, useCartSelector } from "../store/hooks";
+import { type CartItem ,addToCart, removeFromCart } from "../store/cart-slice.ts";
+import { useCartDispatch, useCartSelector } from "../store/hooks.ts";
 
 
 export default function CartItems() {
