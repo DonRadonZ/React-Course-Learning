@@ -5,10 +5,9 @@ export interface DateCountState {
 }
 
 export type CountAction = 
-    | {type: 'inc' | 'dec'}
+    | {type: 'inc' | 'dec'| "RESET"}
     | {type: "SET_COUNT"; newCount: number}
     | {type: "SET_STEP"; newStep: number}
-    | {type: "RESET"}
     
   
 
