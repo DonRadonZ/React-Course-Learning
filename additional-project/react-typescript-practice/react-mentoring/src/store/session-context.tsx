@@ -24,6 +24,7 @@ type SessionContextValue = SessionState & {
 export const SessionContext = createContext<SessionContextValue | null>(null);
 
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useSessionsContext(){
     const context = useContext(SessionContext);
     if(!context) {

@@ -32,6 +32,17 @@ function Button(props: ButtonProps | ButtonLinkProps) {
             
         )
     }
+
+    const {children, textOnly, ...otherProps} = props;
+
+    return(
+        <button
+            className={`button ${textOnly ? 'button--text-only':""}`}
+            {...otherProps}
+        >
+            {children}
+        </button>
+    )
 }
 
 export default Button
