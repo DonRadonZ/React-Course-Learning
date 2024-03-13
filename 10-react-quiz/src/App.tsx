@@ -1,13 +1,21 @@
-import React from 'react';
 
-import DateCounter from './utils/dateCount/DateCounter';
+
+import Header from './components/Header/header';
+import Main from './components/main/main';
+
+
 
 
 function App() {
   return (
-    <div>
+    <div className="app">
+      <Header />
+
+      <Main>
+        <p>1/15</p>
+        <p>Question?</p>
+      </Main>
       
-      <DateCounter/>
     </div>
   );
 }
