@@ -12,9 +12,13 @@ import FinishScreen from './components/finishscreen/FinishScreen';
 import Footer from './components/Footer/Footer';
 import Timer from './components/timer/Timer';
 
+
+//types
+import { QuestionsProps } from '../types/questions';
+
 const SECS_PER_QUESTION = 30;
 
-const initialState = {
+const initialState : QuestionsProps = {
   questions: [],
 
 
