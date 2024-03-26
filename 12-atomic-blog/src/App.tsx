@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { faker } from "@faker-js/faker";
+import { HeaderProp, MainProp, onAddPostProp, PostInfoProp, PostProps, SearchProps } from "./types/post";
 
 function createRandomPost() {
   return {
@@ -12,8 +13,8 @@ function App() {
   const [posts, setPosts] = useState(() =>
     Array.from({ length: 30 }, () => createRandomPost())
   );
-  const [searchQuery, setSearchQuery] = useState("");
-  const [isFakeDark, setIsFakeDark] = useState(false);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [isFakeDark, setIsFakeDark] = useState<boolean>(false);
 
   // Derived state. These are the posts that will actually be displayed
   const searchedPosts =
@@ -25,7 +26,7 @@ function App() {
         )
       : posts;
 
-  function handleAddPost(post) {
+  function handleAddPost(post: PostInfoProp) {
     setPosts((posts) => [post, ...posts]);
   }
 
@@ -63,7 +64,7 @@ function App() {
   );
 }
 
-function Header({ posts, onClearPosts, searchQuery, setSearchQuery }) {
+function Header({ posts, onClearPosts, searchQuery, setSearchQuery }: HeaderProp) {
   return (
     <header>
       <h1>
@@ -81,7 +82,7 @@ function Header({ posts, onClearPosts, searchQuery, setSearchQuery }) {
   );
 }
 
-function SearchPosts({ searchQuery, setSearchQuery }) {
+function SearchPosts({ searchQuery, setSearchQuery }: SearchProps) {
   return (
     <input
       value={searchQuery}
@@ -91,11 +92,11 @@ function SearchPosts({ searchQuery, setSearchQuery }) {
   );
 }
 
-function Results({ posts }) {
+function Results({ posts }: PostProps) {
   return <p>🚀 {posts.length} atomic posts found</p>;
 }
 
-function Main({ posts, onAddPost }) {
+function Main({ posts, onAddPost }: MainProp) {
   return (
     <main>
       <FormAddPost onAddPost={onAddPost} />
@@ -104,7 +105,7 @@ function Main({ posts, onAddPost }) {
   );
 }
 
-function Posts({ posts }) {
+function Posts({ posts }:PostProps) {
   return (
     <section>
       <List posts={posts} />
@@ -112,11 +113,11 @@ function Posts({ posts }) {
   );
 }
 
-function FormAddPost({ onAddPost }) {
+function FormAddPost({ onAddPost }: onAddPostProp) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
-  const handleSubmit = function (e) {
+  const handleSubmit = function (e: { preventDefault: () => void; }) {
     e.preventDefault();
     if (!body || !title) return;
     onAddPost({ title, body });
@@ -141,10 +142,10 @@ function FormAddPost({ onAddPost }) {
   );
 }
 
-function List({ posts }) {
+function List({ posts }: PostProps) {
   return (
     <ul>
-      {posts.map((post, i) => (
+      {posts.map((post: PostInfoProp, i : number) => (
         <li key={i}>
           <h3>{post.title}</h3>
           <p>{post.body}</p>
@@ -154,7 +155,7 @@ function List({ posts }) {
   );
 }
 
-function Archive({ onAddPost }) {
+function Archive({ onAddPost }: onAddPostProp) {
   // Here we don't need the setter function. We're only using state to store these posts because the callback function passed into useState (which generates the posts) is only called once, on the initial render. So we use this trick as an optimization technique, because if we just used a regular variable, these posts would be re-created on every render. We could also move the posts outside the components, but I wanted to show you this trick 😉
   const [posts] = useState(() =>
     // 💥 WARNING: This might make your computer slow! Try a smaller `length` first
